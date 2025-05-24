@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Cards | Sarga Printing Press</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">
+    <h1><a href="index.html">Sarga Printing</a></h1>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="burger">
+    <i class="fas fa-bars"></i>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header" style="background-image: url('assets/wedding-banner.jpg'); background-size: cover; color: white;">
+  <h1>Wedding Card Printing</h1>
+  <p>Choose from a range of designs and customization options</p>
+</section>
+
+<!-- Wedding Card Options -->
+<section class="product-container">
+  <div class="product-left">
+    <img id="card-image" src="assets/wedding-std.jpg" alt="Standard Wedding Card" />
+  </div>
+  <div class="product-right">
+    <div class="card-options">
+      <button onclick="loadCard('std')">Standard</button>
+      <button onclick="loadCard('classic')">Classic</button>
+      <button onclick="loadCard('premium')">Premium</button>
+      <button onclick="loadCard('readymade')">Readymade</button>
+      <button onclick="loadCard('custom')">Customized</button>
+    </div>
+    <div class="card-details" id="card-details">
+      <h2>Standard Wedding Card</h2>
+      <p>Economical and elegant. Perfect for budget-friendly events.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" value="100" min="1">
+    </div>
+
+    <div class="form-group">
+      <label for="paper">Select Paper:</label>
+      <select id="paper">
+        <option value="matte">Matte</option>
+        <option value="glossy">Glossy</option>
+        <option value="textured">Textured</option>
+      </select>
+    </div>
+
+    <div class="rate-display">
+      <h3>Estimated Price: ₹<span id="rate">--</span></h3>
+      <button onclick="calculateRate()">Check Rate</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Meppayur,+Kerala" target="_blank">Meppayur, Kerala</a></p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919188331197">+91 9188331197</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:sargaoffsermpr@gmail.com">sargaoffsermpr@gmail.com</a></p>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 Sarga Printing Press. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919188331197" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const cardData = {
+    std: {
+      img: 'assets/wedding-std.jpg',
+      title: 'Standard Wedding Card',
+      desc: 'Economical and elegant. Perfect for budget-friendly events.'
+    },
+    classic: {
+      img: 'assets/wedding-classic.jpg',
+      title: 'Classic Wedding Card',
+      desc: 'Traditional design with rich details.'
+    },
+    premium: {
+      img: 'assets/wedding-premium.jpg',
+      title: 'Premium Wedding Card',
+      desc: 'High-quality printing with luxury paper and finishes.'
+    },
+    readymade: {
+      img: 'assets/wedding-readymade.jpg',
+      title: 'Readymade Wedding Card',
+      desc: 'Quick print cards available in bulk.'
+    },
+    custom: {
+      img: 'assets/wedding-custom.jpg',
+      title: 'Customized Wedding Card',
+      desc: 'Fully personalized design according to your theme.'
+    }
+  };
+
+  function loadCard(type) {
+    document.getElementById('card-image').src = cardData[type].img;
+    document.getElementById('card-details').innerHTML = `
+      <h2>${cardData[type].title}</h2>
+      <p>${cardData[type].desc}</p>
+    `;
+  }
+
+  function calculateRate() {
+    const type = document.getElementById('card-details').querySelector('h2').textContent;
+    const quantity = document.getElementById('quantity').value;
+    const paper = document.getElementById('paper').value;
+
+    // Simulated rate fetch (replace with DB/API logic)
+    let baseRate = {
+      'Standard Wedding Card': 8,
+      'Classic Wedding Card': 12,
+      'Premium Wedding Card': 20,
+      'Readymade Wedding Card': 5,
+      'Customized Wedding Card': 25
+    }[type] || 10;
+
+    let paperMultiplier = {
+      matte: 1,
+      glossy: 1.2,
+      textured: 1.5
+    }[paper] || 1;
+
+    const total = Math.round(baseRate * paperMultiplier * quantity);
+    document.getElementById('rate').textContent = total;
+  }
+</script>
+
+</body>
+</html>
