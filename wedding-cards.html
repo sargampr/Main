@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Cards | Sarga Printing Press</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/rate.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -32,30 +33,30 @@
   <p>Choose from a range of designs and customization options</p>
 </section>
 
-<!-- Wedding Card Options -->
-<section class="product-container">
-  <div class="product-left">
+<!-- Wedding Card Options (updated classes) -->
+<section class="rate-container">
+  <div class="rate-left">
     <img id="card-image" src="assets/wedding-std.jpg" alt="Standard Wedding Card" />
   </div>
-  <div class="product-right">
-    <div class="card-options">
+  <div class="rate-right">
+    <div class="rate-options">
       <button onclick="loadCard('std')">Standard</button>
       <button onclick="loadCard('classic')">Classic</button>
       <button onclick="loadCard('premium')">Premium</button>
       <button onclick="loadCard('readymade')">Readymade</button>
       <button onclick="loadCard('custom')">Customized</button>
     </div>
-    <div class="card-details" id="card-details">
+    <div class="rate-details" id="card-details">
       <h2>Standard Wedding Card</h2>
       <p>Economical and elegant. Perfect for budget-friendly events.</p>
     </div>
 
-    <div class="form-group">
+    <div class="form-row">
       <label for="quantity">Quantity:</label>
       <input type="number" id="quantity" value="100" min="1">
     </div>
 
-    <div class="form-group">
+    <div class="form-row">
       <label for="paper">Select Paper:</label>
       <select id="paper">
         <option value="matte">Matte</option>
@@ -141,7 +142,6 @@
     const quantity = document.getElementById('quantity').value;
     const paper = document.getElementById('paper').value;
 
-    // Simulated rate fetch (replace with DB/API logic)
     let baseRate = {
       'Standard Wedding Card': 8,
       'Classic Wedding Card': 12,
